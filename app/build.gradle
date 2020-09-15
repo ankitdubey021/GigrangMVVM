@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        applicationId "com.ankitdubey021.gigrangmvvm"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation deps.androidx.navigation.nav_frag
+    implementation deps.androidx.navigation.nav_ui
+    implementation deps.activityKtx
+    implementation deps.dynamicFontSize.sdp
+    implementation deps.dynamicFontSize.ssp
+    implementation deps.hilt.core
+    implementation deps.hilt.hiltViewModel
+    kapt deps.hilt.daggerHiltCompiler
+    kapt deps.hilt.hiltCompiler
+    implementation deps.fragmentKtx
+    implementation deps.material
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.log
+    implementation deps.timber
+
+
+}
