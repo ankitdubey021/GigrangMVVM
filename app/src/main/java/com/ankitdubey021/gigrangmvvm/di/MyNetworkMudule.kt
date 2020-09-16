@@ -49,7 +49,6 @@ class NetworkModule{
     @Singleton
     fun providesNetworkService(
         retrofit: Retrofit
-    ) = retrofit.create(ApiService::class.java)
-
+    ): ApiService = retrofit.create(ApiService::class.java)
 
 }

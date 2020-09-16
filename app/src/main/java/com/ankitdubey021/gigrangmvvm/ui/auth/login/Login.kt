@@ -7,19 +7,30 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.ankitdubey021.gigrangmvvm.commons.toast
+
 import com.ankitdubey021.gigrangmvvm.commons.utils.ProgressBarUtils
 import com.ankitdubey021.gigrangmvvm.commons.utils.State
+import com.ankitdubey021.gigrangmvvm.commons.utils.launchActivity
+import com.ankitdubey021.gigrangmvvm.commons.utils.toast
+import com.ankitdubey021.gigrangmvvm.data.AUTHORIZATION
 import com.ankitdubey021.gigrangmvvm.databinding.FragmentLoginBinding
+import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
+import com.ankitdubey021.gigrangmvvm.ui.home.Home
+import com.google.gson.JsonObject
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.ResponseBody
+import org.json.JSONObject
 import timber.log.Timber
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class Login : Fragment() {
 
-    lateinit var binding : FragmentLoginBinding
+    @Inject lateinit var prefsHelper: SharedPrefsHelper
     private val loginViewModel: LoginViewModel by viewModels()
+
+    lateinit var binding : FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,9 +53,9 @@ class Login : Fragment() {
 
                 is State.Success-> {
                     ProgressBarUtils.removeProgressDialog()
-                    requireContext().toast(state.data.string())
-                    Timber.i(state.data.string())
+                    proceedToHome(state.data)
                 }
+
                 is State.Error -> {
                     ProgressBarUtils.removeProgressDialog()
                     requireContext().toast(state.message.string())
@@ -52,5 +63,15 @@ class Login : Fragment() {
                 }
             }
         })
+    }
+
+    private fun proceedToHome(data: ResponseBody) {
+        val res = JSONObject(data.string())
+        prefsHelper.put(AUTHORIZATION, "Bearer " + res.getString("token"))
+
+        activity?.let {
+            it.launchActivity<Home> {  }
+            it.finish()
+        }
     }
 }

@@ -8,11 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ankitdubey021.gigrangmvvm.R
-import com.ankitdubey021.gigrangmvvm.commons.isValidEmail
-import com.ankitdubey021.gigrangmvvm.commons.toast
-import com.ankitdubey021.gigrangmvvm.commons.utils.State
-import com.ankitdubey021.gigrangmvvm.commons.utils.giveMeJson
-import com.ankitdubey021.gigrangmvvm.commons.utils.with
+import com.ankitdubey021.gigrangmvvm.commons.utils.*
 import com.ankitdubey021.gigrangmvvm.data.repository.LoginRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.collect
@@ -40,21 +36,11 @@ class LoginViewModel @ViewModelInject constructor(
     var password = ""
 
     fun validate(){
-        if(mail.isEmpty())
-            context.toast(context.getString(R.string.err_mail_mandatory))
-
-        else if(!mail.isValidEmail())
-            context.toast(context.getString(R.string.err_mail_invalid))
-
-        else if(password.isEmpty())
-            context.toast(context.getString(R.string.err_password_mandatory))
-
-        else if(password.length<4)
-            context.toast(context.getString(R.string.err_password_length))
-
-        else
-            login()
-
+        if(mail.isEmpty()) context.toast(context.getString(R.string.err_mail_mandatory))
+        else if(!mail.isValidEmail()) context.toast(context.getString(R.string.err_mail_invalid))
+        else if(password.isEmpty()) context.toast(context.getString(R.string.err_password_mandatory))
+        else if(password.length<4) context.toast(context.getString(R.string.err_password_length))
+        else login()
     }
 
     private fun login() {

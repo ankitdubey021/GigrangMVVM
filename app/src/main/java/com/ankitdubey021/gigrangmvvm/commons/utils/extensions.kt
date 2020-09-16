@@ -1,4 +1,4 @@
-package com.ankitdubey021.gigrangmvvm.commons
+package com.ankitdubey021.gigrangmvvm.commons.utils
 
 import android.app.Activity
 import android.content.Context
@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -31,6 +33,8 @@ fun View.hide(){
 fun View.show(){
     this.visibility = View.VISIBLE
 }
+
+fun Context.getColorRes(@ColorRes id: Int) = ContextCompat.getColor(applicationContext, id)
 
 fun String.isValidEmail(): Boolean {
     if (this.startsWith(".") || this.startsWith("_") || this.contains("..") || this.contains("__")

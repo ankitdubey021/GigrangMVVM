@@ -16,10 +16,12 @@ class LoginRepository @Inject constructor(
 ){
 
     fun getData(json : JsonObject) =
-
         flow<State<ResponseBody>>{
+
             emit(State.loading())
+
             val response = apiService.doPostApiCall(apiLogin,json)
+
             if(response.isSuccessful)
                 emit(State.success(response.body()!!))
             else
