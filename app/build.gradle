@@ -54,6 +54,7 @@ dependencies {
     implementation deps.activityKtx
     implementation deps.dynamicFontSize.sdp
     implementation deps.dynamicFontSize.ssp
+    implementation deps.glide
     implementation deps.hilt.core
     implementation deps.hilt.hiltViewModel
     kapt deps.hilt.daggerHiltCompiler

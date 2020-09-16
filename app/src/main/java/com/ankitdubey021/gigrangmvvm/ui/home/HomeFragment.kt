@@ -9,11 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ankitdubey021.gigrangmvvm.R
-import com.ankitdubey021.gigrangmvvm.commons.utils.ProgressBarUtils
-import com.ankitdubey021.gigrangmvvm.commons.utils.State
-import com.ankitdubey021.gigrangmvvm.commons.utils.getColorRes
-import com.ankitdubey021.gigrangmvvm.commons.utils.toast
+import com.ankitdubey021.gigrangmvvm.commons.utils.*
 import com.ankitdubey021.gigrangmvvm.data.Category
+import com.ankitdubey021.gigrangmvvm.data.Developer
+import com.ankitdubey021.gigrangmvvm.data.DeveloperList
 import com.ankitdubey021.gigrangmvvm.databinding.FragmentHomeBinding
 import com.google.android.material.chip.Chip
 import com.google.gson.Gson
@@ -25,12 +24,17 @@ import timber.log.Timber
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    lateinit var binding : FragmentHomeBinding
+    private lateinit var binding : FragmentHomeBinding
     private val homeViewModel by viewModels<HomeViewModel>()
     private var categoryList = mutableListOf<Category>()
+    private var developerList = mutableListOf<Developer>()
     private var selectedChip : Chip? = null
     private var selectedCategoryId : String? = null
     private var page = 0
+    private var shouldLoadMore = true
+    private val homeAdapter : HomeAdapter  by lazy {
+        HomeAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +42,24 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+        initViews()
+        return binding.root
+    }
+
+    private fun initViews() {
         fetchCategories()
         observerDevelopers()
-        return binding.root
+
+        binding.rvCandidates.apply {
+            adapter = homeAdapter
+            xOnScrollListener {
+                if(shouldLoadMore) {
+                    page++
+                    fetchDevelopers()
+                }
+            }
+        }
+        homeAdapter.daos = developerList
     }
 
     private fun fetchCategories() {
@@ -69,12 +88,24 @@ class HomeFragment : Fragment() {
 
                 is State.Success-> {
                     ProgressBarUtils.removeProgressDialog()
-                    Timber.e(state.data.string())
+                    renderDevelopersData(state)
                 }
 
                 is State.Error -> renderErrorState(state)
             }
         })
+    }
+
+    private fun renderDevelopersData(res : State.Success<ResponseBody>) {
+
+        val jsonRes = JSONObject(res.data.string())
+        val list = Gson().fromJson(jsonRes.getJSONObject("data").toString(), DeveloperList::class.java)
+        developerList.addAll(list.data)
+        homeAdapter.notifyDataSetChanged()
+
+        shouldLoadMore =
+            jsonRes.getJSONObject("data").getInt("total") != developerList.size
+
     }
 
     private fun renderErrorState(state: State.Error<ResponseBody>) {
@@ -132,6 +163,8 @@ class HomeFragment : Fragment() {
 
         selectedCategoryId = if(chip.text=="All") null else chip.id.toString()
 
+        developerList.clear()
+        page=0
         fetchDevelopers()
     }
 

@@ -6,9 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-<FrameLayout
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whiteLight"
     tools:context=".ui.home.HomeFragment">
 
     <HorizontalScrollView
@@ -34,5 +36,17 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="@dimen/_8sdp"
+        android:id="@+id/rvCandidates"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="3"
+        tools:listitem="@layout/recyclerview_home_feed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
+
+</LinearLayout>
 </layout>

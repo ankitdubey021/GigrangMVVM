@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="stringUtils"
+            type="com.ankitdubey021.gigrangmvvm.commons.utils.MyStringUtils.Companion" />
+
+        <variable
+            name="dao"
+            type="com.ankitdubey021.gigrangmvvm.data.Developer" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/_5sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvCandidateName"
+                style="@style/tvNotoSansBold"
+
+                android:layout_width="0dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{stringUtils.join(dao.firstname,dao.lastname)}"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardview"
+                app:layout_constraintTop_toTopOf="@+id/cardview" />
+
+            <RelativeLayout
+                android:id="@+id/cardview"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_gravity="center|top"
+                android:gravity="left"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_centerHorizontal="true"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/ivCandidate"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        app:imageFromUrl="@{dao.profilePic}"
+                         />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    app:clipToCircle="@{true}"
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@color/colorAccent"
+                    />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/tvNotoSansRegular"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Online"
+                android:visibility="gone"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCandidateProfile" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/tvExperiance"
+                tools:text="10 year experience"
+                style="@style/tvNotoSansMedium"
+                android:layout_below="@id/tvStatus"
+                android:text="@{stringUtils.totalExperience(dao.experience)}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+            <TextView
+                android:id="@+id/tvSkills"
+                style="@style/tvNotoSansRegular"
+                android:layout_width="0dp"
+                android:layout_below="@id/tvExperiance"
+                android:ellipsize="end"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:maxLines="2"
+                tools:text="App UI design, Web UI Design, Logo design,App UI design, Web UI Design, Logo design"
+                android:text="@{stringUtils.skills(dao.skillsinfo)}"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvExperiance" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/tvNotoSansBold"
+                android:layout_below="@id/tvSkills"
+                android:text="@{stringUtils.salary(dao.price.charges)}"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSkills" />
+
+            <TextView
+                android:id="@+id/tvCandidateProfile"
+                style="@style/tvNotoSansRegular"
+
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Android Developer"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toEndOf="@+id/cardview"
+                app:layout_constraintTop_toBottomOf="@+id/tvCandidateName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

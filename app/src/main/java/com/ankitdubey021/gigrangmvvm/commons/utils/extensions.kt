@@ -8,6 +8,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import timber.log.Timber
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -48,4 +52,21 @@ fun String.isValidEmail(): Boolean {
     pattern = Pattern.compile(emailPattern)
     matcher = pattern.matcher(this)
     return matcher.matches()
+}
+
+
+fun RecyclerView.xOnScrollListener(load : () -> Unit){
+
+    val scrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            val totalItemCount = recyclerView!!.layoutManager!!.itemCount
+            val lastVisibleItemPosition = (recyclerView!!.layoutManager!! as GridLayoutManager).findLastVisibleItemPosition()
+
+            Timber.e("${lastVisibleItemPosition}")
+            if (totalItemCount == lastVisibleItemPosition + 1)
+                load()
+        }
+    }
+    this.addOnScrollListener(scrollListener)
 }
