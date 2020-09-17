@@ -9,17 +9,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ankitdubey021.gigrangmvvm.R
-import com.ankitdubey021.gigrangmvvm.commons.utils.*
+import com.ankitdubey021.gigrangmvvm.utils.*
 import com.ankitdubey021.gigrangmvvm.data.Category
 import com.ankitdubey021.gigrangmvvm.data.Developer
 import com.ankitdubey021.gigrangmvvm.data.DeveloperList
 import com.ankitdubey021.gigrangmvvm.databinding.FragmentHomeBinding
+import com.ankitdubey021.gigrangmvvm.extensions.getColorRes
+import com.ankitdubey021.gigrangmvvm.extensions.toast
+import com.ankitdubey021.gigrangmvvm.extensions.xOnScrollListener
+import com.ankitdubey021.gigrangmvvm.networking.State
 import com.google.android.material.chip.Chip
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.ResponseBody
 import org.json.JSONObject
-import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -121,6 +124,7 @@ class HomeFragment : Fragment() {
     private fun renderErrorState(state: State.Error<ResponseBody>) {
         ProgressBarUtils.removeProgressDialog()
         requireContext().toast(state.message.string())
+
     }
 
 

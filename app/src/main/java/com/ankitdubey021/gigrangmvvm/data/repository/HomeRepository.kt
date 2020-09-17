@@ -1,13 +1,15 @@
 package com.ankitdubey021.gigrangmvvm.data.repository
 
-import com.ankitdubey021.gigrangmvvm.commons.utils.Json
-import com.ankitdubey021.gigrangmvvm.commons.utils.State
+
+import com.ankitdubey021.gigrangmvvm.networking.State
+import com.ankitdubey021.gigrangmvvm.extensions.Json
 import com.ankitdubey021.gigrangmvvm.networking.ApiService
 import com.ankitdubey021.gigrangmvvm.networking.apiCategories
 import com.ankitdubey021.gigrangmvvm.networking.apiFetchDevelopers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.ResponseBody
+
 import javax.inject.Inject
 import javax.inject.Singleton
 

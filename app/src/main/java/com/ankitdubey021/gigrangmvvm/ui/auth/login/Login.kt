@@ -8,13 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 
-import com.ankitdubey021.gigrangmvvm.commons.utils.ProgressBarUtils
-import com.ankitdubey021.gigrangmvvm.commons.utils.State
-import com.ankitdubey021.gigrangmvvm.commons.utils.launchActivity
-import com.ankitdubey021.gigrangmvvm.commons.utils.toast
+import com.ankitdubey021.gigrangmvvm.utils.ProgressBarUtils
+import com.ankitdubey021.gigrangmvvm.networking.State
+
 import com.ankitdubey021.gigrangmvvm.data.AUTHORIZATION
 import com.ankitdubey021.gigrangmvvm.databinding.FragmentLoginBinding
 import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
+import com.ankitdubey021.gigrangmvvm.extensions.launchActivity
+import com.ankitdubey021.gigrangmvvm.extensions.toast
 import com.ankitdubey021.gigrangmvvm.ui.Home
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.ResponseBody

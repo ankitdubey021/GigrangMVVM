@@ -3,9 +3,9 @@ package com.ankitdubey021.gigrangmvvm.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ankitdubey021.gigrangmvvm.R
-import com.ankitdubey021.gigrangmvvm.commons.utils.launchActivity
 import com.ankitdubey021.gigrangmvvm.data.AUTHORIZATION
 import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
+import com.ankitdubey021.gigrangmvvm.extensions.launchActivity
 import com.ankitdubey021.gigrangmvvm.ui.auth.AuthActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope

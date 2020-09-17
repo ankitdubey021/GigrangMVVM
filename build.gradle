@@ -39,6 +39,7 @@ ext.versions = [
         "material":"1.2.0-alpha06",
         "nav_version":"2.3.0",
         "retrofit":'2.9.0',
+        "recyclerview":"1.1.0",
         "room":"2.0.0",
         "timber":"4.7.1"
 ]
@@ -54,10 +55,12 @@ ext.deps = [
                         "nav_frag":"androidx.navigation:navigation-fragment-ktx:${versions.nav_version}",
                         "nav_ui":"androidx.navigation:navigation-ui-ktx:${versions.nav_version}"
                 ],
+                "recyclerview":"androidx.recyclerview:recyclerview:${versions.recyclerview}",
                 "room":[
                         "core":"androidx.room:room-runtime:${versions.room}",
                         "compiler":"androidx.room:room-compiler:${versions.room}",
                 ],
+
         ],
 
         "fragmentKtx":"androidx.fragment:fragment-ktx:${versions.fragmentKtx}",

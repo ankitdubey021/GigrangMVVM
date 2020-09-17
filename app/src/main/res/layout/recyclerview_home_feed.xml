@@ -8,7 +8,7 @@
 
         <variable
             name="stringUtils"
-            type="com.ankitdubey021.gigrangmvvm.commons.utils.MyStringUtils.Companion" />
+            type="com.ankitdubey021.gigrangmvvm.utils.MyStringUtils" />
 
         <variable
             name="dao"

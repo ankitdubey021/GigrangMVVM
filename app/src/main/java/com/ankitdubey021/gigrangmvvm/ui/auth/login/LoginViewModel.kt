@@ -8,8 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ankitdubey021.gigrangmvvm.R
-import com.ankitdubey021.gigrangmvvm.commons.utils.*
 import com.ankitdubey021.gigrangmvvm.data.repository.LoginRepository
+import com.ankitdubey021.gigrangmvvm.extensions.Json
+import com.ankitdubey021.gigrangmvvm.extensions.isValidEmail
+import com.ankitdubey021.gigrangmvvm.extensions.toast
+import com.ankitdubey021.gigrangmvvm.networking.State
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

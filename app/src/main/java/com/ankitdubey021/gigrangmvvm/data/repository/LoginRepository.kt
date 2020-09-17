@@ -1,10 +1,9 @@
 package com.ankitdubey021.gigrangmvvm.data.repository
 
-import com.ankitdubey021.gigrangmvvm.commons.utils.Json
-import com.ankitdubey021.gigrangmvvm.commons.utils.State
+import com.ankitdubey021.gigrangmvvm.networking.State
+import com.ankitdubey021.gigrangmvvm.extensions.Json
 import com.ankitdubey021.gigrangmvvm.networking.ApiService
 import com.ankitdubey021.gigrangmvvm.networking.apiLogin
-import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.flow
 import okhttp3.ResponseBody
 import javax.inject.Inject
@@ -12,7 +11,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-class LoginRepository @Inject constructor(
+class LoginRepository @Inject  constructor(
     private val apiService: ApiService
 ){
 

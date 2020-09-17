@@ -6,7 +6,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ankitdubey021.gigrangmvvm.R
-import com.ankitdubey021.gigrangmvvm.commons.utils.MyStringUtils
+import com.ankitdubey021.gigrangmvvm.utils.MyStringUtils
 import com.ankitdubey021.gigrangmvvm.data.Developer
 import com.ankitdubey021.gigrangmvvm.databinding.RecyclerviewHomeFeedBinding
 
