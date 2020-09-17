@@ -63,6 +63,7 @@ dependencies {
     implementation deps.hilt.hiltViewModel
     kapt deps.hilt.daggerHiltCompiler
     kapt deps.hilt.hiltCompiler
+
     implementation deps.fragmentKtx
     implementation deps.material
     implementation deps.timber

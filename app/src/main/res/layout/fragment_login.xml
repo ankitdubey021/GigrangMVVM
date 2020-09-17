@@ -8,13 +8,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.ankitdubey021.gigrangmvvm.ui.auth.login.LoginViewModel" />
+            type="com.ankitdubey021.gigrangmvvm.screens.auth.login.LoginViewModel" />
     </data>
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.login.Login">
+    tools:context=".screens.auth.login.Login">
 
             <LinearLayout
                     android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.ankitdubey021.gigrangmvvm.ui
+package com.ankitdubey021.gigrangmvvm.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import com.ankitdubey021.gigrangmvvm.R
 import com.ankitdubey021.gigrangmvvm.data.AUTHORIZATION
 import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
 import com.ankitdubey021.gigrangmvvm.extensions.launchActivity
-import com.ankitdubey021.gigrangmvvm.ui.auth.AuthActivity
+import com.ankitdubey021.gigrangmvvm.screens.auth.AuthActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job

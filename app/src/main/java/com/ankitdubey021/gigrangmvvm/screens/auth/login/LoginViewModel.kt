@@ -1,4 +1,4 @@
-package com.ankitdubey021.gigrangmvvm.ui.auth.login
+package com.ankitdubey021.gigrangmvvm.screens.auth.login
 
 import android.content.Context
 import android.provider.Settings

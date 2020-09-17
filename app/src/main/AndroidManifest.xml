@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Home"></activity>
-        <activity android:name=".ui.auth.AuthActivity" />
-        <activity android:name=".ui.Splash">
+        <activity android:name=".screens.Home"></activity>
+        <activity android:name=".screens.auth.AuthActivity" />
+        <activity android:name=".screens.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

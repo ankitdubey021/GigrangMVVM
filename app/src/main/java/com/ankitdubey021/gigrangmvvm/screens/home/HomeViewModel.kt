@@ -1,4 +1,4 @@
-package com.ankitdubey021.gigrangmvvm.ui.home
+package com.ankitdubey021.gigrangmvvm.screens.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

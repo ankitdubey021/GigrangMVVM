@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ankitdubey021.gigrangmvvm.ui.home.HomeFragment"
+        android:name="com.ankitdubey021.gigrangmvvm.screens.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/profile_dest"
-        android:name="com.ankitdubey021.gigrangmvvm.ui.profile.Profile"
+        android:name="com.ankitdubey021.gigrangmvvm.screens.profile.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/favourite_dest"
-        android:name="com.ankitdubey021.gigrangmvvm.ui.favourite.Favourite"
+        android:name="com.ankitdubey021.gigrangmvvm.screens.favourite.Favourite"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
 </navigation>

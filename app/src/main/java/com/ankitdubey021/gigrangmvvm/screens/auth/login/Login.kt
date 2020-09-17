@@ -1,4 +1,4 @@
-package com.ankitdubey021.gigrangmvvm.ui.auth.login
+package com.ankitdubey021.gigrangmvvm.screens.auth.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import com.ankitdubey021.gigrangmvvm.databinding.FragmentLoginBinding
 import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
 import com.ankitdubey021.gigrangmvvm.extensions.launchActivity
 import com.ankitdubey021.gigrangmvvm.extensions.toast
-import com.ankitdubey021.gigrangmvvm.ui.Home
+import com.ankitdubey021.gigrangmvvm.screens.Home
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.ResponseBody
 import org.json.JSONObject

@@ -1,10 +1,9 @@
-package com.ankitdubey021.gigrangmvvm.ui.home
+package com.ankitdubey021.gigrangmvvm.screens.home
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,7 +15,6 @@ import com.ankitdubey021.gigrangmvvm.data.DeveloperList
 import com.ankitdubey021.gigrangmvvm.databinding.FragmentHomeBinding
 import com.ankitdubey021.gigrangmvvm.extensions.getColorRes
 import com.ankitdubey021.gigrangmvvm.extensions.toast
-import com.ankitdubey021.gigrangmvvm.extensions.xOnScrollListener
 import com.ankitdubey021.gigrangmvvm.networking.State
 import com.google.android.material.chip.Chip
 import com.google.gson.Gson

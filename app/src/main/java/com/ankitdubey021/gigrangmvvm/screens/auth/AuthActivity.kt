@@ -1,4 +1,4 @@
-package com.ankitdubey021.gigrangmvvm.ui.auth
+package com.ankitdubey021.gigrangmvvm.screens.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
