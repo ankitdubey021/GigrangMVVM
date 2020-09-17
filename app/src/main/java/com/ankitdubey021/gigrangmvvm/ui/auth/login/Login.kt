@@ -15,8 +15,7 @@ import com.ankitdubey021.gigrangmvvm.commons.utils.toast
 import com.ankitdubey021.gigrangmvvm.data.AUTHORIZATION
 import com.ankitdubey021.gigrangmvvm.databinding.FragmentLoginBinding
 import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
-import com.ankitdubey021.gigrangmvvm.ui.home.Home
-import com.google.gson.JsonObject
+import com.ankitdubey021.gigrangmvvm.ui.Home
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.ResponseBody
 import org.json.JSONObject

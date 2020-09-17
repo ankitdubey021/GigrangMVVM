@@ -1,5 +1,5 @@
 package com.ankitdubey021.gigrangmvvm.networking
-import com.google.gson.JsonObject
+import com.ankitdubey021.gigrangmvvm.commons.utils.Json
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -12,7 +12,7 @@ interface ApiService {
     @POST
     suspend fun doPostApiCall(
         @Url url : String,
-        @Body jsonObject: JsonObject
+        @Body jsonObject: Json
     ): Response<ResponseBody>
 
     @GET

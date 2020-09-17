@@ -1,21 +1,20 @@
 package com.ankitdubey021.gigrangmvvm.commons.utils
 
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
+import org.json.JSONObject
 
 @DslMarker
 annotation class MJsonMarker
 
-operator fun JsonObject.invoke(func: JsonObject.()->Unit){func()}
-@MJsonMarker fun JsonObject.with(key:String, value:String?){addProperty(key,value)}
-@MJsonMarker fun JsonObject.with(key:String, value:Int?){addProperty(key,value)}
-@MJsonMarker fun JsonObject.with(key:String, value:Double?){addProperty(key,value)}
-@MJsonMarker fun JsonObject.with(key:String, value:Float?){addProperty(key,value)}
-@MJsonMarker fun JsonObject.with(key:String, value:Boolean?){addProperty(key,value)}
-@MJsonMarker fun JsonObject.with(key:String, value: JsonElement?){add(key,value)}
+@MJsonMarker
+class Json() : JSONObject() {
 
-@MJsonMarker fun giveMeJson(func: JsonObject.()->Unit): JsonObject {
-    val json= JsonObject()
-    json.func()
-    return json
+    @MJsonMarker
+    constructor(json: Json.() -> Unit) : this() {
+        this.json()
+    }
+    @MJsonMarker
+    infix fun <T> String.to(value: T) {
+        put(this, value)
+    }
 }
+

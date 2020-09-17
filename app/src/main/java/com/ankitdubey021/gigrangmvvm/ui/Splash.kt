@@ -7,7 +7,6 @@ import com.ankitdubey021.gigrangmvvm.commons.utils.launchActivity
 import com.ankitdubey021.gigrangmvvm.data.AUTHORIZATION
 import com.ankitdubey021.gigrangmvvm.di.SharedPrefsHelper
 import com.ankitdubey021.gigrangmvvm.ui.auth.AuthActivity
-import com.ankitdubey021.gigrangmvvm.ui.home.Home
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job

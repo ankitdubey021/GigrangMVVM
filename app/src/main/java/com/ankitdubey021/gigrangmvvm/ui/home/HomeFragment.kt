@@ -47,8 +47,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun initViews() {
+        page = 0
+        developerList.clear()
+        categoryList.clear()
         fetchCategories()
-        observerDevelopers()
+        observeCategories()
+        observeDevelopers()
 
         binding.rvCandidates.apply {
             adapter = homeAdapter
@@ -62,7 +66,12 @@ class HomeFragment : Fragment() {
         homeAdapter.daos = developerList
     }
 
-    private fun fetchCategories() {
+    private fun fetchCategories(){
+        homeViewModel.fetchCategories()
+    }
+
+    private fun observeCategories() {
+
         homeViewModel.categoryLiveData.observe(viewLifecycleOwner, Observer {state->
             when(state){
                 is State.Loading-> ProgressBarUtils.showProgressDialog(requireContext())
@@ -81,14 +90,14 @@ class HomeFragment : Fragment() {
         homeViewModel.fetchDevelopers(selectedCategoryId,page)
     }
 
-    private fun observerDevelopers() {
+    private fun observeDevelopers() {
         homeViewModel.developersLiveData.observe(viewLifecycleOwner, Observer {state->
             when(state){
                 is State.Loading-> ProgressBarUtils.showProgressDialog(requireContext())
 
                 is State.Success-> {
                     ProgressBarUtils.removeProgressDialog()
-                    renderDevelopersData(state)
+                    renderDevelopersData(state.data.string())
                 }
 
                 is State.Error -> renderErrorState(state)
@@ -96,9 +105,10 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun renderDevelopersData(res : State.Success<ResponseBody>) {
+    private fun renderDevelopersData(res : String) {
+        if(res.isEmpty()) return
 
-        val jsonRes = JSONObject(res.data.string())
+        val jsonRes = JSONObject(res)
         val list = Gson().fromJson(jsonRes.getJSONObject("data").toString(), DeveloperList::class.java)
         developerList.addAll(list.data)
         homeAdapter.notifyDataSetChanged()
@@ -115,15 +125,22 @@ class HomeFragment : Fragment() {
 
 
     private fun renderCategories(data: String) {
+        if(data.isEmpty())return
 
-        categoryList.add(Category(0,"All",null))
+            categoryList.add(Category(0, "All", null))
 
-        val jsonObj = JSONObject(data)
-        val categoryArray = jsonObj.getJSONArray("data")
-        for(x in 0 until categoryArray.length())
-            categoryList.add(Gson().fromJson(categoryArray.getJSONObject(x).toString(),Category::class.java))
+            val jsonObj = JSONObject(data)
+            val categoryArray = jsonObj.getJSONArray("data")
+            for (x in 0 until categoryArray.length())
+                categoryList.add(
+                    Gson().fromJson(
+                        categoryArray.getJSONObject(x).toString(),
+                        Category::class.java
+                    )
+                )
 
-        categoryList.forEach { addCategoryChip(it) }
+            categoryList.forEach { addCategoryChip(it) }
+
     }
 
 

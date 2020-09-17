@@ -1,5 +1,6 @@
 package com.ankitdubey021.gigrangmvvm.data.repository
 
+import com.ankitdubey021.gigrangmvvm.commons.utils.Json
 import com.ankitdubey021.gigrangmvvm.commons.utils.State
 import com.ankitdubey021.gigrangmvvm.networking.ApiService
 import com.ankitdubey021.gigrangmvvm.networking.apiLogin
@@ -15,7 +16,7 @@ class LoginRepository @Inject constructor(
     private val apiService: ApiService
 ){
 
-    fun getData(json : JsonObject) =
+    fun getData(json : Json) =
         flow<State<ResponseBody>>{
 
             emit(State.loading())

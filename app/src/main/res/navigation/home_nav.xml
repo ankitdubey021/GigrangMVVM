@@ -10,4 +10,14 @@
         android:name="com.ankitdubey021.gigrangmvvm.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/profile_dest"
+        android:name="com.ankitdubey021.gigrangmvvm.ui.profile.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/favourite_dest"
+        android:name="com.ankitdubey021.gigrangmvvm.ui.favourite.Favourite"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
 </navigation>

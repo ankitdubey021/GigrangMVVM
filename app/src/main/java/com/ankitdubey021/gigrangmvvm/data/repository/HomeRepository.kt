@@ -1,8 +1,7 @@
 package com.ankitdubey021.gigrangmvvm.data.repository
 
+import com.ankitdubey021.gigrangmvvm.commons.utils.Json
 import com.ankitdubey021.gigrangmvvm.commons.utils.State
-import com.ankitdubey021.gigrangmvvm.commons.utils.giveMeJson
-import com.ankitdubey021.gigrangmvvm.commons.utils.with
 import com.ankitdubey021.gigrangmvvm.networking.ApiService
 import com.ankitdubey021.gigrangmvvm.networking.apiCategories
 import com.ankitdubey021.gigrangmvvm.networking.apiFetchDevelopers
@@ -19,10 +18,10 @@ class HomeRepository @Inject constructor(
 
     fun getDevelopers(categoryId : String?, page : Int, length : Int) : Flow<State<ResponseBody>>{
 
-        val json = giveMeJson {
-            with("page",page)
-            with("category",categoryId)
-            with("length",length)
+        val json = Json{
+           "page" to page
+           "category" to categoryId
+           "length" to length
         }
 
         return flow {

@@ -45,11 +45,11 @@ class LoginViewModel @ViewModelInject constructor(
 
     private fun login() {
 
-            val json = giveMeJson {
-                with("email",mail)
-                with("password",password)
-                with("deviceType","android")
-                with("deviceId",deviceId)
+            val json = Json{
+                "email" to mail
+                "password" to password
+                "deviceType" to "android"
+                "deviceId" to deviceId
             }
 
             viewModelScope.launch {

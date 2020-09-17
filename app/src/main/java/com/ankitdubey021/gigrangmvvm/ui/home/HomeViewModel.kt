@@ -20,7 +20,7 @@ class HomeViewModel @ViewModelInject constructor(
     val developersLiveData: LiveData<State<ResponseBody>> get() = _postsLiveData
     val categoryLiveData: LiveData<State<ResponseBody>> get() = _categoryLiveData
 
-    init {
+    fun fetchCategories(){
         viewModelScope.launch {
             homeRepository.fetchCategories().collect{
                 _categoryLiveData.value = it
